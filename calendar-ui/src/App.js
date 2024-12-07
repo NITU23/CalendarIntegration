@@ -9,7 +9,7 @@ const App = () => {
   const [selectedDate, setSelectedDate] = useState(null); 
 
   useEffect(() => {
-    axios.get('http://localhost:5000/events')
+    axios.get('http://localhost:5000/api/events/')
       .then((response) => setEvents(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -22,7 +22,7 @@ const App = () => {
 
   const handleAddEvent = (newEvent) => {
     setEvents([...events, newEvent]);
-    axios.post('http://localhost:5000/events', newEvent)
+    axios.post('http://localhost:5000/api/events/', newEvent)
       .then((response) => console.log('Event saved:', response.data))
       .catch((error) => console.error(error));
     setShowForm(false); 
